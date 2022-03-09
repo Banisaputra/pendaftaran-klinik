@@ -36,7 +36,7 @@ if (!isset($_SESSION["login"])) {
                                 <div class="card bg-secondary text-white mb-4">
                                     <div class="card-body">Pedaftaran</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="tune_up.php">View Details</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -88,8 +88,7 @@ if (!isset($_SESSION["login"])) {
                                 </thead>
                                 <tbody>
                                 <?php
-                                    $tanggal = date('d - m - Y');
-                                    $day = date('D', strtotime($tanggal));
+                                    $day = date('D');
                                     $dayList = array(
                                         'Sun' => 'Minggu',
                                         'Mon' => 'Senin',
@@ -108,7 +107,7 @@ if (!isset($_SESSION["login"])) {
                                         <td>".$row['poliklinik']."</td>
                                         <td>".$row['dokter']."</td>
                                         <td>".$row['spesialis']."</td>
-                                        <td>".$row['jam_praktek']."</td>
+                                        <td>".date('H:i', strtotime($row['jam_praktek_awal']))." - ".date('H:i', strtotime($row['jam_praktek_akhir']))." WIB</td>
                                         
                                         </tr>
                                     ";
