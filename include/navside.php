@@ -28,7 +28,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="pendaftaran.php">Pendafataran Pasien</a>
+                                    <a class="nav-link" href="daftar.php">Pendafataran Pasien</a>
                                     <a class="nav-link" href="informasi.php">Information</a>
                                 </nav>
                             </div>
