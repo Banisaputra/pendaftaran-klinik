@@ -35,6 +35,7 @@ if( isset($_POST["login"])) {
 			// set session
             $_SESSION['user'] = $row['id_user'];
             $_SESSION['nama'] = $row['nama'];
+            $_SESSION['level'] = $row['level'];
 			$_SESSION["login"] = true;
 			// cek remember
 			if(isset($_POST["inputRememberMe"])){
