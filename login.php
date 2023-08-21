@@ -18,11 +18,11 @@ if(isset($_COOKIE["id"])&& isset($_COOKIE['key'])) {
 
 if(isset($_SESSION["login"])) {
 	header("Location: index.php");
-	exit;
+	return;
 }
 
-// mengecek apakah tombol login sudah ditekan atau belum
-if( isset($_POST["login"])) {
+// login button clicked
+if(isset($_POST["login"])) {
 	$id_user = $_POST["inputid"];
 	$password = $_POST["inputPassword"];
 	// cek username dan password dalam data base 
@@ -45,7 +45,7 @@ if( isset($_POST["login"])) {
 			}
 			
 			header("Location: index.php");
-			exit;
+			return;
 		}
 	}
 	$error = true;

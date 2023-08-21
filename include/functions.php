@@ -1,6 +1,6 @@
 <?php
 // connect to database
-$conn = mysqli_connect("localhost","root","","project_01");
+$conn = mysqli_connect("localhost","root","","pendaftaran-klinik","3307");
 
 // fungsi query
 function query ($query) {
@@ -14,8 +14,7 @@ function query ($query) {
 }
   
 
-// PASIEN ---->
-// fungsi input pasien
+// Pasien function
 function add_users($data){
 	global $conn;
 	$nama = ucwords($_POST['nama']); 
@@ -49,7 +48,7 @@ function add_users($data){
 	// random id_user
 	$letters = '';
 	$numbers = '';
-	foreach(range('A', 'Z')as $char){
+	foreach(range('A','Z')as $char){
 		$letters .= $char;
 	}
 	for($i=0; $i<10; $i++){
@@ -62,16 +61,16 @@ function add_users($data){
 	return mysqli_affected_rows($conn);
 	
 }
-// delete pasien
+
 function delete_pasien($id){
 	global $conn;
 	mysqli_query($conn, "DELETE FROM users WHERE id_user = '$id'");
 	return mysqli_affected_rows($conn);
 }
-// edit pasien
+
 function edit_pasien($data) {
 	global $conn;
-	// ambil data dari tiap element dalam form
+	// get data form
 	$id = ($_POST["id_user"]);
 	$nama = ucwords($_POST['nama']); 
 	$tgl_lahir = $_POST['tgl_lahir'];
@@ -86,8 +85,7 @@ function edit_pasien($data) {
 	return mysqli_affected_rows($conn);
 }
 
-// DOKTER --->
-// input Dokter
+// Dokter function
 function add_dokter($data){
 	global $conn;
 	$nama = htmlspecialchars(ucwords($_POST['nama']));
@@ -100,7 +98,6 @@ function add_dokter($data){
 	return mysqli_affected_rows($conn);
 }
 
-// edit dokter
 function edit_dokter($data){
 	global $conn;
 	$nama = htmlspecialchars(ucwords($_POST['nama']));
@@ -115,15 +112,13 @@ function edit_dokter($data){
 		
 }
 
-// delete dokter
 function delete_dokter($id){
 	global $conn;
 	mysqli_query($conn, "DELETE FROM dokter WHERE id_dokter = '$id'");
 	return mysqli_affected_rows($conn);
 }
 
-// poliklinik
-// input poliklinik
+// poliklinik function
 function add_poliklinik($data){
 	global $conn;
 	$nama = $_POST['nama'];
@@ -135,7 +130,6 @@ function add_poliklinik($data){
 	return mysqli_affected_rows($conn);
 }
 
-// edit poliklinik
 function edit_poliklinik($data){
 	global $conn;
 	$nama = htmlspecialchars(ucwords($_POST['nama']));
@@ -149,7 +143,6 @@ function edit_poliklinik($data){
 	
 }
 
-// delete poliklinik
 function delete_poliklinik($id){
 	global $conn;
 	mysqli_query($conn, "DELETE FROM poliklinik WHERE id_poliklinik = '$id'");
@@ -157,8 +150,7 @@ function delete_poliklinik($id){
 
 }
 
-// Jadawal Praktek
-// jadwal input
+// Jadawal Praktek function
 function add_jadwal($data){
 	global $conn;
 	$id_dokter = $_POST['id_dokter'];
@@ -175,7 +167,6 @@ function add_jadwal($data){
 	return mysqli_affected_rows($conn);
 }
 
-// jadwal edit
 function edit_jadwal($data){
 	global $conn;
 	$id = $_POST['ID'];
@@ -193,7 +184,6 @@ function edit_jadwal($data){
 
 }
 
-// delete jadwal
 function delete_jadwal($id){
 	global $conn;
 	mysqli_query($conn, "DELETE FROM jadwal WHERE ID = '$id'");
@@ -202,7 +192,6 @@ function delete_jadwal($id){
 }
 
 // pendaftaran
-// daftar input
 function add_daftar($data){
 	global $conn;
 	$nama = $_POST['nama'];
@@ -223,7 +212,6 @@ function add_daftar($data){
 
 }
 
-// edit daftar
 function edit_daftar($ata){
 	global $conn;
 	$id = $_POST['id_daftar'];
@@ -236,19 +224,11 @@ function edit_daftar($ata){
 	return mysqli_affected_rows($conn);
 }
 
-// delete daftar
 function delete_daftar($id){
 	global $conn;
 	mysqli_query($conn, "DELETE FROM pendaftaran WHERE id_daftar ='$id'");
 	return mysqli_affected_rows($conn);
 
 }
-
-
-
-
-
-
-
 
 ?>

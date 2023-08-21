@@ -8,9 +8,9 @@
             | All Rights Reserved by BNS Corp
             </div>
             <div>
-                <a href="#">Privacy Policy</a>
+                <a href="javascript:;">Privacy Policy</a>
                    &middot;
-                <a href="#">Terms &amp; Conditions</a>
+                <a href="javascript:;">Terms &amp; Conditions</a>
             </div>
         </div>
     </div>
