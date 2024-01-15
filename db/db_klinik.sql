@@ -65,24 +65,26 @@ insert  into `jadwal`(`id`,`id_dokter`,`poliklinik`,`dokter`,`spesialis`,`hari`,
 DROP TABLE IF EXISTS `pendaftaran`;
 
 CREATE TABLE `pendaftaran` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_daftar` varchar(50) NOT NULL,
-  `no_rm` varchar(50) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `code_daftar` varchar(50) NOT NULL,
+  `code_rm` varchar(50) NOT NULL,
+  `id_pasien` varchar(25) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `tgl_periksa` date NOT NULL DEFAULT current_timestamp(),
   `poliklinik` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_pendaftaran` (`no_rm`),
-  UNIQUE KEY `no_rm` (`no_rm`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`,`id_pasien`),
+  UNIQUE KEY `id_pendaftaran` (`code_rm`),
+  UNIQUE KEY `no_rm` (`code_rm`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pendaftaran` */
 
-insert  into `pendaftaran`(`id`,`id_daftar`,`no_rm`,`nama`,`tgl_periksa`,`poliklinik`) values 
-(3,'DF34219','RM08','Bani Saputra','2022-02-28','Poli Mata'),
-(4,'DF58260','RM03','Wulan Putri','2022-02-23','Poli Mata'),
-(5,'DF97218','RM02','Johan Aldi','2022-02-24','poli jantung'),
-(6,'DF07618','RM05','Agung','2022-02-26','Poli Jantung');
+insert  into `pendaftaran`(`id`,`code_daftar`,`code_rm`,`id_pasien`,`nama`,`tgl_periksa`,`poliklinik`) values 
+(3,'DF34219','RM08','EUO985174302','Bani Saputra','2022-02-28','Poli Mata'),
+(4,'DF58260','RM03','0','Wulan Putri','2022-02-23','Poli Mata'),
+(5,'DF97218','RM02','0','Johan Aldi','2022-02-24','poli jantung'),
+(6,'DF07618','RM05','0','Agung','2022-02-26','Poli Jantung'),
+(10,'DF25469','RM23','JGO479218056','putri aulia','2024-01-15','THT');
 
 /*Table structure for table `poliklinik` */
 
