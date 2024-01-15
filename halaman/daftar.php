@@ -61,22 +61,26 @@ if (!isset($_SESSION["login"])) {
                                 <tbody>
                                 <?php
                                     $sql = "SELECT * FROM pendaftaran";
-                                    $query = $conn->query($sql);$i = 1;
+                                    if($_SESSION['level'] != "staff"){
+                                        $sql .= " WHERE id_pasien='".$_SESSION['user']."'";
+                                    }
+                                    $query = $conn->query($sql);
+                                    $i = 1;
                                     while($row = $query->fetch_assoc()){
                                     echo "
                                     <tr> 
                                         <td>".$i."</td>
-                                        <td>".$row['id_daftar']."</td>
+                                        <td>".$row['code_daftar']."</td>
                                         <td>".$row['nama']."</td>
-                                        <td>".$row['no_rm']."</td>
+                                        <td>".$row['code_rm']."</td>
                                         <td>".$row['poliklinik']."</td>
                                         <td>".$row['tgl_periksa']."</td>";
                                         $i++;
                                         if($_SESSION['level']=='staff'){
                                             echo "
                                             <td>
-                                                <a href='daftar_edit.php?id=".$row['id_daftar']."'><button class='btn btn-success'><i class='fa fa-edit'></i>Edit</button></a>
-                                                <a href=javascript:dialogHapus('daftar_delete.php?id=".$row['id_daftar']."')><button class='btn btn-danger'><i class='fa fa-trash'></i>Delete</button></a>
+                                                <a href='daftar_edit.php?id=".$row['code_daftar']."'><button class='btn btn-success'><i class='fa fa-edit'></i>Edit</button></a>
+                                                <a href=javascript:dialogHapus('daftar_delete.php?id=".$row['code_daftar']."')><button class='btn btn-danger'><i class='fa fa-trash'></i>Delete</button></a>
                                             </td>";}
                                     echo"</tr>";
                                     }?>

@@ -43,7 +43,7 @@ if (!isset($_SESSION["login"])) {
                                 <i class="fas fa-columns"></i>
                                 Informasi Form
                             </div>
-                             
+                            <code>development in progress</code>
                         </div>
                     </div>
                 </main>

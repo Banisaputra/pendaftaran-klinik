@@ -5,7 +5,7 @@
                 <script type="text/javascript">
                    new Date().getFullYear()&&document.write(new Date().getFullYear());
                 </script>
-            | All Rights Reserved by BNS Corp
+            | All Rights Reserved by MVI
             </div>
             <div>
                 <a href="javascript:;">Privacy Policy</a>

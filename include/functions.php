@@ -198,16 +198,16 @@ function add_daftar($data){
 	$no = $_POST['no_rm'];
 	$poli = $_POST['poliklinik'];
 	$tgl = $_POST['tgl_periksa'];
-
+	$id_pasien = $_POST['id_pasien'];
 	$letters = 'DF';
 	$numbers = '';
 	 
 	for($i=0; $i<10; $i++){
 		$numbers .= $i;
 	}
-	$id_daftar = $letters.substr(str_shuffle($numbers),0 ,5);
+	$code_daftar = $letters.substr(str_shuffle($numbers),0 ,5);
 
-	mysqli_query($conn, "INSERT INTO pendaftaran VALUES (NULL, '$id_daftar', '$no', '$nama', '$tgl', '$poli')");
+	mysqli_query($conn, "INSERT INTO pendaftaran VALUES (NULL, '$code_daftar', '$no', $id_pasien, '$nama', '$tgl', '$poli')");
 	return mysqli_affected_rows($conn);
 
 }

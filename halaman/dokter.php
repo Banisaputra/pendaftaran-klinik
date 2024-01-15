@@ -45,13 +45,17 @@ if (!isset($_SESSION["login"])) {
                                 Record Data Dokter
                             </div>
                             <div class="card-body">
+                                <?php if($_SESSION['level'] == "staff") : ?>
                                 <a href="dokter_add.php"><button class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> Tambah Dokter</button></a><br><br>
+                                <?php endif; ?>
                                 <table class="table" method="GET" id="datatablesSimple">
                                 <thead>
                                     <th>ID Dokter</th>
                                     <th>Nama</th>
                                     <th>Spesialis</th>
+                                    <?php if($_SESSION['level'] == "staff") : ?>
                                     <th>Tools</th>
+                                    <?php endif; ?>
                                 </thead>
                                 <tbody>
                                 <?php
@@ -63,11 +67,15 @@ if (!isset($_SESSION["login"])) {
                                         <td>".$row['id_dokter']."</td>
                                         <td>".$row['nama']."</td>
                                         <td>".$row['spesialis']."</td> 
-                                        <td>
-                                            <a href='dokter_edit.php?id=".$row['id_dokter']."'><button class='btn btn-success'><i class='fa fa-edit'></i>Edit</button></a>
-                                            <a href=javascript:dialogHapus('dokter_delete.php?id=".$row['id_dokter']."')><button class='btn btn-danger'><i class='fa fa-trash'></i>Delete</button></a>
-                                        </td>
-                                        </tr>";
+                                        ";                                        
+                                        if($_SESSION['level'] == "staff") {
+                                            echo "
+                                            <td>
+                                                <a href='dokter_edit.php?id=".$row['id_dokter']."'><button class='btn btn-success'><i class='fa fa-edit'></i>Edit</button></a>
+                                                <a href=javascript:dialogHapus('dokter_delete.php?id=".$row['id_dokter']."')><button class='btn btn-danger'><i class='fa fa-trash'></i>Delete</button></a>
+                                            </td>";
+                                        }
+                                    echo "</tr>";
                                     }
                                 ?>
                                 </tbody>

@@ -56,6 +56,7 @@ if(isset($_POST["submit"])) {
                             </div>
                             <div class="card-body">
                                 <form action="" name='form_pendaftar' method="POST">
+                                    <input type="hidden" name="id_pasien" value="<?= $_SESSION['user']; ?>">
                                     <div class="md-3">
                                         <label class="form-label" for="nama">Nama Pasien</label>
                                         <input class="form-control" type="text" name="nama" placeholder="Nama Pasien" required>

@@ -45,12 +45,16 @@ if (!isset($_SESSION["login"])) {
                                 Record Data Poliklinik
                             </div>
                             <div class="card-body">
+                            <?php if($_SESSION['level'] == "staff") : ?>
                                 <a href="poliklinik_add.php"><button class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> Tambah Poliklinik</button></a><br><br>
+                            <?php endif; ?>
                                 <table class="table" method="GET" id="datatablesSimple">
                                 <thead>
                                     <th>ID Poliklinik</th>
-                                    <th>Nama</th> 
+                                    <th>Nama</th>
+                                    <?php if($_SESSION['level'] == "staff") : ?>
                                     <th>Tools</th>
+                                    <?php endif; ?>
                                 </thead>
                                 <tbody>
                                 <?php
@@ -61,12 +65,16 @@ if (!isset($_SESSION["login"])) {
                                         <tr>
                                         <td>".$row['id_poliklinik']."</td>
                                         <td>".$row['nama']."</td> 
-                                        <td>
-                                            <a href='poliklinik_edit.php?id=".$row['id_poliklinik']."'><button class='btn btn-success'><i class='fa fa-edit'></i>Edit</button></a>
-                                            <a href=javascript:dialogHapus('poliklinik_delete.php?id=".$row['id_poliklinik']."')><button class='btn btn-danger'><i class='fa fa-trash'></i>Delete</button></a>
-                                        </td>
-                                        </tr>
                                     ";
+                                        if($_SESSION['level'] == "staff") {
+                                            echo "
+                                            <td>
+                                                <a href='poliklinik_edit.php?id=".$row['id_poliklinik']."'><button class='btn btn-success'><i class='fa fa-edit'></i>Edit</button></a>
+                                                <a href=javascript:dialogHapus('poliklinik_delete.php?id=".$row['id_poliklinik']."')><button class='btn btn-danger'><i class='fa fa-trash'></i>Delete</button></a>
+                                            </td>
+                                            ";
+                                        }
+                                    echo "</tr>";
                                     }
                                 ?>
                                 </tbody>

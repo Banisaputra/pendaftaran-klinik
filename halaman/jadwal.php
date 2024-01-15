@@ -45,7 +45,9 @@ if (!isset($_SESSION["login"])) {
                                 Record Data Jadwal Praktek
                             </div>
                             <div class="card-body">
+                            <?php if($_SESSION['level'] == "staff") : ?>
                                 <a href="jadwal_add.php"><button class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> Tambah Jadwal</button></a><br><br>
+                            <?php endif; ?>
                                 <table class="table" method="GET" id="datatablesSimple">
                                 <thead>
                                     <th>ID Dokter</th>

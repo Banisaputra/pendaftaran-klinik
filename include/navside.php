@@ -16,7 +16,9 @@
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
+                    <?php if($_SESSION['level'] == "staff") : ?>
                     <a class="nav-link" href="pasien.php">Data Pasien</a>
+                    <?php endif; ?>
                     <a class="nav-link" href="dokter.php">Data Dokter</a>
                     <a class="nav-link" href="poliklinik.php">Data Politeknik</a>
                     <a class="nav-link" href="jadwal.php">Jadwal Praktek</a>
